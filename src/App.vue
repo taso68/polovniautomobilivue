@@ -3,7 +3,7 @@
     <HeaderTop></HeaderTop>
     <nav class="nav-wrapper">
       <div class="nav-left">
-        <router-link to="/home">
+        <router-link to="/">
           <button class="button-edged" id="my-profile-button">
             <font-awesome-icon class="icon" id="my-profile-icon" :icon="['fas', 'home']" size="xl" />
             home
@@ -68,11 +68,15 @@ body{
   height: 2rem;
   margin-right: 1rem;
   border-radius: 5px;
-
 }
 .button-edged:hover {
   transform: scale(0.9);
   transition: all 300ms;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.inputsstyle {
+  border: 1px solid green;
+  border-radius: 3px;
 }
 </style>
 
