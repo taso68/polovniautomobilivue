@@ -55,5 +55,6 @@ export default {
   .home-wrapper{
     height: 100%;
     width: 100%;
+    
   }
 </style>

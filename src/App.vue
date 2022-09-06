@@ -47,7 +47,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #ffffff;
   width: 100%;
   height: 100%;
 }
@@ -85,14 +85,19 @@ body{
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #eee;
+  /* background: rgb(32, 110, 193); */
+  /* background: radial-gradient(circle, rgba(32, 110, 193, 1) 0%, rgba(76, 175, 80, 0.4676498241638869) 91%); */
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  
 }
 .nav-wrapper{
+  margin: .5rem;
   height: 2.4rem;
   width: 100%;
   background-color: #4CAF50;
   display: flex;
   justify-content: space-between;
+  background: transparent;
 }
 .nav-left{
   justify-content: flex-start;

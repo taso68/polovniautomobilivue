@@ -137,10 +137,11 @@ export default {
 <style scoped>
 .search-wrapper {
     width: 60vw;
+    min-width: 280px;
     border: 1px solid black;
     margin: 1rem;
     padding: 1rem;
-    box-shadow: 10px 10px 5px lightblue;
+    box-shadow: 10px 10px 5px rgb(3, 44, 57);
     border-radius: 12px;
     display: flex;
     flex-wrap: wrap;
@@ -168,7 +169,8 @@ input:invalid {
 #src-button{
 width: 50%;
 background-color: #4CAF50;
-}#clr-button {
+}
+#clr-button {
 background-color:#206ec1;
 }
 
