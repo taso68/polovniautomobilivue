@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/Home.vue'
 import ProfileView from '../views/Profile.vue'
+import NewAdView from '../views/NewAd.vue'
 const routes = [
   {
     path: '/',
@@ -11,7 +12,13 @@ const routes = [
     path: "/profile",
     name: "profile",
     component: ProfileView
+  },
+  {
+    path: "/newad",
+    name: "newadd",
+    component: NewAdView
   }
+
 ]
 
 

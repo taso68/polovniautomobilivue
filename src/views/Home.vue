@@ -53,7 +53,7 @@ export default {
 
 <style>
   .home-wrapper{
-    height: 100%;
+    min-height: 70%;
     width: 100%;
     
   }

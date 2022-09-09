@@ -67,15 +67,15 @@
             </select>
         </div>
         <div id="bodies-wrapper" class="src-element">
-            <select>
+            <select v-model="body">
                 <option value="">Body</option>
-                <option v-for="body in this.srcBarBodies.bodies" :value="fuel.id" :key="body">{{ body.name}}
+                <option v-for="body in this.srcBarBodies.bodies" :value="body.id" :key="body">{{ body.name}}
                 </option>
             </select>
         </div>
         <div id="src-buttons">
             <button id="src-button" class="button-edged">SEARCH</button>
-            <button id="clr-button" class="button-edged">CLEAR</button>
+            <button id="clr-button" class="button-edged" @click="clear()">CLEAR</button>
         </div>
     </div>
 </template>
@@ -96,7 +96,8 @@ export default {
             yearTo: "",
             fuel: "",
             cm3From: "",
-            cm3To: ""
+            cm3To: "",
+            body: ""
         }
     },
     methods:{
@@ -120,6 +121,20 @@ export default {
         },
         selectedModel(event){
             this.selectedModelId = event.target.value;
+        },
+        clear(){
+            this.currentModels = null
+            this.markIndex = ""
+            this.selectedMarkId = null
+            this.selectedModelId = null
+            this.priceFrom = ""
+            this.priceTo = ""
+            this.yearFrom = ""
+            this.yearTo = ""
+            this.fuel = ""
+            this.cm3From = ""
+            this.cm3To = ""
+            this.body = ""
         }
     },
     computed: {
@@ -141,7 +156,7 @@ export default {
     border: 1px solid black;
     margin: 1rem;
     padding: 1rem;
-    box-shadow: 10px 10px 5px rgb(3, 44, 57);
+    box-shadow: 10px 10px 5px rgb(0, 63, 45);
     border-radius: 12px;
     display: flex;
     flex-wrap: wrap;
@@ -157,9 +172,7 @@ export default {
     display: inline-flex;
     padding: 0 !important;
 }
-input:invalid {
-    border: 5px solid red;
-}
+
 #src-buttons{
     display: inline-flex;
     height: 2rem;

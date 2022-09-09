@@ -9,9 +9,11 @@
             home
           </button>
         </router-link>
-        <button class="button-edged" id="my-profile-button">
-          <font-awesome-icon class="icon" id="my-profile-icon" :icon="['fas', 'plus']" size="xl" /> New Ad
-        </button>
+        <router-link to="/newad">
+          <button class="button-edged" id="my-profile-button">
+            <font-awesome-icon class="icon" id="my-profile-icon" :icon="['fas', 'plus']" size="xl" /> New Ad
+          </button>
+        </router-link>
       </div>
       <div class="nav-right">
         <router-link to="/profile">
@@ -50,6 +52,7 @@ export default {
   color: #ffffff;
   width: 100%;
   height: 100%;
+
 }
 body{
   margin: 0px;
@@ -74,9 +77,16 @@ body{
   transition: all 300ms;
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
-.inputsstyle {
-  border: 1px solid green;
-  border-radius: 3px;
+input, select, textarea{
+  background-color: #434343;
+  border: none;
+  color: white
+}
+input[type=number]::-webkit-inner-spin-button {
+  opacity: 0.2;
+}
+input:invalid {
+    border: 2px solid red;
 }
 </style>
 
@@ -92,8 +102,9 @@ body{
 }
 .nav-wrapper{
   margin: .5rem;
+  margin-right: 0;
   height: 2.4rem;
-  width: 100%;
+  min-width: 100%;
   background-color: #4CAF50;
   display: flex;
   justify-content: space-between;
