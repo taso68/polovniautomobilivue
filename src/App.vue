@@ -71,6 +71,7 @@ body{
   height: 2rem;
   margin-right: 1rem;
   border-radius: 5px;
+  min-width: 100px;  
 }
 .button-edged:hover {
   transform: scale(0.9);
@@ -98,13 +99,14 @@ input:invalid {
   /* background: rgb(32, 110, 193); */
   /* background: radial-gradient(circle, rgba(32, 110, 193, 1) 0%, rgba(76, 175, 80, 0.4676498241638869) 91%); */
   background-image: linear-gradient(to right, #434343 0%, black 100%);
+  overflow: scroll;
   
 }
 .nav-wrapper{
   margin: .5rem;
   margin-right: 0;
   height: 2.4rem;
-  min-width: 100%;
+  min-width: 100vw;
   background-color: #4CAF50;
   display: flex;
   justify-content: space-between;
@@ -124,6 +126,7 @@ input:invalid {
 }
 .nav-right {
   justify-content: flex-end;
+  margin-right: 0;
 }
 #my-profile-button {
   background-color: #206ec1;

@@ -4,7 +4,7 @@
             <div id="ad-data">
                 <div class="group">
                     <label for="title">Title: </label>
-                    <input type="text" id="title" name="title">
+                    <input type="text" id="title" name="title" v-model="title">
                 </div>
                 <div class="group">
                     <label for="description">Description: </label><br />
@@ -91,13 +91,25 @@
                 </div>
             </div>
             <div id="ad-photos">
+                <label id="custom-file-upload" class="button-edged" for="file-input">Chose photos
+                    <font-awesome-icon class="icon" :icon="['fas', 'image']"  />
+                    <input id="file-input" name="file-input" type="file" multiple :change="photos" @change="loadFilesFromInput($event)">
+                </label>
                 <div id="photo-container">
-                    <input type="file" multiple :change="photos" @change="loadFilesFromInput($event)">
-                    <div class="photo-box">
-                        <img src="" alt="">
+                    <div class="photo-box" v-for="(photo, index) in photos" :key="photo" :value="index">
+                        <button class="remove-image-btn" @click="removePhoto(index)">X</button>
+                        <img :src="this.displayPhotoUrls[index]" alt="">
                     </div>
 
                 </div>
+                <button class="button-edged" id="post-btn">
+                    <font-awesome-icon class="icon" :icon="['fas', 'upload']" />
+                    POST
+                    <font-awesome-icon class="icon" :icon="['fas', 'upload']" />
+                </button>
+                <button class="button-edged" id="reset-btn" @click="resetAll()">RESET
+                    <font-awesome-icon class="icon" :icon="['fas', 'refresh']" />
+                </button>
             </div>
             
         </div>
@@ -106,36 +118,56 @@
 
 <script>
 import axios from 'axios';
+import router from '@/router';
 export default {
     data(){
         return{
-
-            currentCities: null,
+            //STATIC DATA
             marks: null,
             fuels: null,
             bodies: null,
             countries: null,
-            currentModels: null,
-
+            
+            //DINAMIC DATA
             markIndex: "",
             countryIndex: "",
+            currentCities: null,
+            currentModels: null,
+            displayPhotoUrls:[],
 
-            fuelId: "",
-            bodyId: "",
+            
+            //DATA FOR SEND
+            userId: 1,
+            title: null,
+            description: null,
             selectedMarkId: null,
+            selectedModelId: null,
+            price: null,
+            cm3: null,
+            productionYear: "",
+            fuelId: null,
+            bodyId: null,
+            seats: null,
             selectedCountryId: null,
-            selectedCityId: "",
+            selectedCityId: null,
             photos: [],
-            displayPhotoUrls:[]
 
         }
     },
     methods: {
+        resetAll(){
+            // this.$forceUpdate();
+            this.$router.go(0);
+        },
+        removePhoto(index){
+            this.photos.splice(index, 1)
+            this.displayPhotoUrls.splice(index, 1)
+        },
         loadFilesFromInput(event){
             for (let i = 0; i < event.target.files.length; i++){
                 this.photos.push(event.target.files[i])
+                this.displayPhotoUrls.push(URL.createObjectURL(event.target.files[i]))
             }
-            console.log(this.photos);
         },
         async getMarksWithModels() {
             try {
@@ -217,26 +249,24 @@ export default {
     min-width: 70vw;
 }
 #new-ad-container{
-    border: 1px solid white;
     min-height: 50vw;
     min-width: 400px;
     display: flex;
     flex-wrap: wrap;
 }
 #ad-data{
-    margin: 1rem;
     padding: 0.5rem;
     padding-left: 3rem;
-    width: 30%;
-    border: 1px solid white;
+    min-width: 20%;
+    max-height: 50%;
     display: block;
     align-items: left;
 }
 #ad-photos{
-    margin: 1rem;
     padding: 0.5rem;
-    min-width: 35%;
-    border: 1px solid white;
+    max-width: 50%;
+    min-width: 400px;
+    max-height: 55vh;
 }
 #power{
     width: 5rem;
@@ -245,17 +275,51 @@ export default {
     text-align: left;
 }
 #photo-container{
-    width: 90%;
-    height: 70%;
-    border: 1px solid white;
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    justify-content: space-around;
 }
 .photo-box{
-    width: 200px;
-    height: 200px;
-    border: 1px solid white;
+    max-width: 200px;
+    max-height: 200px;
+    margin: 10px;
+    position: relative;
+}
+.photo-box img{
+    max-width: 200px;
+    max-height: 200px;
+    
 }
 input{
     margin: 10px;
+}
+#file-input{
+    background-color: #206ec1;
+    cursor: pointer;
+    display: none;
+}
+#custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 12px 12px 0 0;
+    cursor: pointer;
+    background-color: #4CAF50;
+    font-size:1rem;
+}
+#post-btn{
+    background-color: #4CAF50;
+    width: 13rem;
+    height: 4rem;
+    font-size: x-large;
+    
+}
+.remove-image-btn{
+    position: absolute;
+    right: 0;
 }
 textarea {
     resize: none;
