@@ -3,7 +3,6 @@
         <!-- <p v-for="mark in this.srcBarMarks.marks" :key="mark.id">TEST</p> -->
         <div class="src-element group-wrapper">
             <div id="mark-wrapper" class="src-element">
-
                 <select v-model="markIndex" @change="setSelectedMarkId($event)">
                     <option value="" selected>Marks</option>
                     <option v-for="(mark,index) in this.srcBarMarks.marks" :key="mark.id" :value="index">
@@ -116,6 +115,10 @@ export default {
             // console.log("Selected model id: : " + this.selectedModelId);            
         },
         setSelectedMarkId(event){
+            if (!event.target.value) {
+                this.currentModels = null
+                return
+            }
             this.selectedMarkId = this.srcBarMarks.marks[event.target.value].id
             this.currentModels = this.srcBarMarks.marks[event.target.value].models
         },

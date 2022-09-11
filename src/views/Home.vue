@@ -47,7 +47,10 @@ export default {
       this.getMarksWithModels()
       this.getFuels()
       this.getBodies()
-    }
+    },
+  created() {
+    document.title = "Used cars";
+  }
 }
 </script>
 

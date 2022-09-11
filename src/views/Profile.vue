@@ -4,7 +4,9 @@
 
 <script>
 export default {
-
+  created() {
+    document.title = "Profile";
+  }
 }
 </script>
 
