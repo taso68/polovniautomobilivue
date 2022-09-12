@@ -38,7 +38,7 @@ export default {
 
 <style scoped>
 .header-wrapper{
-  max-width: 100%;
+  max-width: 100vw;
   height: 3rem;
   background-color: rgb(38, 35, 35);
   color: white;

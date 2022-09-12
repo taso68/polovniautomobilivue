@@ -247,12 +247,15 @@ export default {
 #new-ad-wrapper{
     padding: 1rem;
     min-width: 70vw;
+     max-width: 100vw;
 }
 #new-ad-container{
     min-height: 50vw;
     min-width: 400px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 100vw;
 }
 #ad-data{
     padding: 0.5rem;
@@ -276,12 +279,16 @@ export default {
 }
 #photo-container{
     max-width: 100%;
-    max-height: 100%;
-    min-height: 30%;
+    min-height: 350px;
+    max-height: 352px;
     display: flex;
     flex-wrap: wrap;
     overflow: scroll;
     justify-content: space-around;
+    border: 2px solid #415469;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 5px;
 }
 .photo-box{
     max-width: 200px;
